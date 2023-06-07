@@ -1,5 +1,5 @@
 import fs from 'fs'
-import ProductModel from './class.js'
+import ProductModel from '../../class.js'
 
 class ProductManager {
     constructor(path) {
@@ -94,7 +94,7 @@ class ProductManager {
 
     async deleteProduct(id) {
         try {
-            let dataProduct = await fs.promises.readFile(this.path, "utf8");
+            let dataProduct = await fs.promises.readFile(this.path, "utf-8");
             let dataProductParse = JSON.parse(dataProduct);
             let product = dataProductParse.find(product => product.id === id);
             if (product) {
@@ -120,6 +120,19 @@ let producto1 = new ProductModel('producto de prueba', 'este es un producto', 20
 
 
 productos.addProducts(producto1)
+
+productos.addProducts ("Producto de prueba1","Este es un producto1", 200, "Sin Imagen1", "abc123", 25)
+productos.addProducts ("Producto de prueba2","Este es un producto2", 200, "Sin Imagen2", "abc124", 25)
+productos.addProducts ("Producto de prueba3","Este es un producto3", 200, "Sin Imagen3", "abc125", 25)
+productos.addProducts ("Producto de prueba4 ","Este es un producto4", 200, "Sin Imagen4", "abc126", 25)
+productos.addProducts ("Producto de prueba5","Este es un producto5", 200, "Sin Imagen5", "abc127", 25)
+productos.addProducts ("Producto de prueba6","Este es un producto6", 200, "Sin Imagen6", "abc128", 25)
+productos.addProducts ("Producto de prueba7","Este es un producto7", 200, "Sin Imagen7", "abc129", 25)
+productos.addProducts ("Producto de prueba8","Este es un producto8", 200, "Sin Imagen8", "abc130", 25)
+productos.addProducts ("Producto de prueba9","Este es un producto9", 200, "Sin Imagen9", "abc131", 25)
+productos.addProducts ("Producto de prueba10","Este es un producto10", 200, "Sin Imagen10", "abc132", 25)
+productos.addProducts ("Producto de prueba11","Este es un producto11", 200, "Sin Imagen11", "abc133", 25)
+
 
 productos.getProductById(2)
 
