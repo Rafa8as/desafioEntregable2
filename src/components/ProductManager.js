@@ -1,9 +1,9 @@
 import fs from 'fs'
 import ProductModel from '../../class.js'
 
-class ProductManager {
+ export  default class ProductManager {
     constructor(path) {
-        this.path = path
+        this.path = "./data.txt"
     }
 
     //----------------- Agrego un producto -----------------
@@ -11,6 +11,8 @@ class ProductManager {
     async addProducts(product) {
         try {
             let dataProduct = await fs.promises.readFile(this.path, 'utf-8')
+
+            console.log (dataProduct);
             let dataProdParse = JSON.parse(dataProduct);
 
             if (dataProdParse.some(num => num.code == product.code) !== true
@@ -72,7 +74,7 @@ class ProductManager {
 
     async updateProducts(id, prop, newValue) {
         try {
-            let dataProduct = await fs.promises.readFile(this.path, "utf-8");
+            let dataProduct = await fs.promises.readFile(this.patch, "utf-8");
             let dataProdParse = JSON.parse(dataProduct)
             let product = dataProdParse.findIndex(product => product.id === id)
             if (product > -1) {
